@@ -27,6 +27,9 @@ jobs:
           port: ${{ secrets.PORT }}
           source: "run.sh"
           target: "/home/${{ secrets.USERNAME }}/"
+          timeout: 60
+          script_stop: true
+          ssh_disable_strict_host_key_checking: true
 
       - name: Execute run.sh on remote server
         uses: appleboy/ssh-action@master
@@ -35,6 +38,9 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
+          timeout: 60
+          script_stop: true
+          ssh_disable_strict_host_key_checking: true
           script: |
             cd /home/${{ secrets.USERNAME }}
             chmod +x run.sh
