@@ -3,7 +3,7 @@ version: '3.7'
 services:
   frontend:
     restart: unless-stopped
-    image: #todo
+    image: fe_uek223
     container_name: frontend
     depends_on:
       - backend
@@ -11,12 +11,16 @@ services:
       - 3000:80
   backend:
     restart: unless-stopped
-    image: #todo
+    image: be_uek223
     container_name: backend
     ports:
       - 8080:8080
     environment:
-      -  #env
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
     depends_on:
       - db
   db:
