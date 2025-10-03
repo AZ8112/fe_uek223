@@ -12,11 +12,6 @@ jobs:
       - name: Say Hello (locally)
         run: echo "Hello World!"
 
-      - name: Show secret (still won't)
-        run: echo $MY_SECRET
-        env:
-          MY_SECRET: ${{ secrets.MY_SECRET }}
-
       - name: Make run.sh executable
         run: chmod +x run.sh
 
@@ -41,5 +36,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
+            cd /home/${{ secrets.USERNAME }}
             chmod +x run.sh
             ./run.sh
