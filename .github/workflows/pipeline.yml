@@ -17,6 +17,9 @@ jobs:
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
 
+      - name: Make run.sh executable
+        run: chmod +x run.sh
+
       - name: Run the script locally
         run: ./run.sh
 
